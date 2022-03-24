@@ -1,4 +1,9 @@
 class PostController {
+    
+    index(req, res, next) {
+        res.render('pages/home')
+    }
+
     show(req, res, next) {
         res.render('post/detail')
     }

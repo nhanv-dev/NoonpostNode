@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const morgan = require('morgan')
+// const morgan = require('morgan')
 
 const route = require('./routes')
 
@@ -10,7 +10,7 @@ const handlebars = require('express-handlebars')
 const port = process.env.PORT || 3000
 
 // Set log
-app.use(morgan('combined'))
+// app.use(morgan('combined'))
 
 // Set engine handlebars
 app.engine('hbs', handlebars.engine({

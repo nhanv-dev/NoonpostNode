@@ -1,8 +1,10 @@
-const postRouter = require('./post.router');
-const siteRouter = require('./site.router');
+const postRouter = require('./post');
+const siteRouter = require('./site');
 
 function route(app) {
+
     app.get('/post', postRouter)
+
     app.get('/', siteRouter)
 }
 
