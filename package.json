@@ -1,0 +1,28 @@
+{
+  "name": "personal-blog",
+  "version": "1.0.0",
+  "description": "Using nodejs + express + engine handlebars to build a blog website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nhanv-dev/personal-blog-node.git"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs",
+    "handlebar",
+    "mongodb"
+  ],
+  "author": "nhanv-dev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhanv-dev/personal-blog-node/issues"
+  },
+  "homepage": "https://github.com/nhanv-dev/personal-blog-node#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
