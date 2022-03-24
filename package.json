@@ -2,8 +2,9 @@
   "name": "personal-blog",
   "version": "1.0.0",
   "description": "Using nodejs + express + engine handlebars to build a blog website",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "start": "nodemon --inspect ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +24,12 @@
   },
   "homepage": "https://github.com/nhanv-dev/personal-blog-node#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "mongoose": "^6.2.8"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
   }
 }
