@@ -1,5 +1,8 @@
 class PostController {
-    
+    constructor() {
+        category: []
+    }
+
     index(req, res, next) {
         res.render('pages/home')
     }
@@ -9,6 +12,7 @@ class PostController {
     }
 
     create(req, res, next) {
+        console.log(req.body)
         res.render('post/create')
     }
 

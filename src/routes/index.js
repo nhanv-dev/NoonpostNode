@@ -1,11 +1,11 @@
-const postRouter = require('./post');
 const siteRouter = require('./site');
+const postRouter = require('./post');
 
 function route(app) {
 
-    app.get('/post', postRouter)
+    app.use('/post', postRouter)
 
-    app.get('/', siteRouter)
+    app.use('/', siteRouter)
 }
 
 module.exports = route
