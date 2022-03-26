@@ -4,7 +4,8 @@ const router = express.Router()
 const siteController = require('../app/controllers/SiteController')
 
 router.use('/signup', siteController.signup)
-router.use('/login', siteController.login)
+router.get('/login', siteController.login)
+router.post('/login', siteController.authorize)
 router.use('/', siteController.home)
 
 module.exports = router

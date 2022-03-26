@@ -1,32 +1,46 @@
 <div class="grid">
+    {{#each posts}}
     <div class="item">
         <div class="post">
-            <a href="/post/example" class="post__thumbnail">
-                <img src="https://noonpost.netlify.app/html/template/assets/img/blog/20.jpg" alt="">
+            <a href="/post/{{this.slug}}" class="post__thumbnail">
+                <img src={{this.thumbnail}} alt="">
             </a>
             <a href="/category/travel" class="post__category">
-                Travel
+                {{this.category}}
             </a>
             <h5 class="post__title">
-                <a href="/post/example">
-                    Rodrigues Island: When I Found a Paradise Next to Paradise
+                <a href="/post/{{this.slug}}">
+                    {{this.title}}
                 </a>
             </h5>
             <p class="post__subtitle">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque error non praesentium perferendis
-                incidunt doloremque ea vero at adipisci, delectus ut, nam id corporis suscipit laborum. Molestias
-                eos nam distinctio!
+                {{!-- {{{this.content}}} --}}
+                Q: So first, can you tell us a bit about how you make the case for diversity in your organization – What
+                do you think are the
             </p>
             <div class="post__info">
-                <a href="/author/post" class="post__author">
+                <a href="/author/{{this.slugAuthor}}" class="post__author">
                     <img src="https://cdn.iconscout.com/icon/free/png-256/face-1659511-1410033.png" alt="Avatar">
-                    <span>Thanh Nhân</span>
+                    <span>{{this.author}}</span>
                 </a>
                 <i class="fa-solid fa-circle"></i>
                 <p class="post__createdAt">
-                    January 15, 2021
+                    {{convertDate this.createdAt}}
                 </p>
             </div>
         </div>
     </div>
+    {{/each }}
 </div>
+<script src="https://unpkg.com/magic-grid/dist/magic-grid.min.js"></script>
+
+<script>
+    let magicGrid = new MagicGrid({
+        container: '.grid',
+        gutter: 30,
+        animate: true,
+        static: true,
+    });
+
+    magicGrid.listen();
+</script>

@@ -1,18 +1,18 @@
 <div class="card__custom">
-    <div class="d-flex justify-content-between align-items-center">
-        <h5 class="card__custom__title">Create a new post</h5>
-        <button type="submit" class="form__button-submit">Submit</button>
-    </div>
     <form action="/post/store" method="post">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <h5 class="card__custom__title m-0">Create a new post</h5>
+            <button onclick="handleReset()" type="reset" class="form__button-reset mt-1">Reset</button>
+        </div>
         <div class="row g-4 mb-3">
-            <div class="col-12 col-lg-8 ">
+            <div class="col-12 col-lg-6">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <input type="text" class="form-control" id="floatingInput" name="title">
                     <label for="floatingInput">Title</label>
                 </div>
             </div>
-            <div class="col-12 col-lg-4">
-                <select class="form-select h-100" aria-label="Category select">
+            <div class="col-12 col-lg-3">
+                <select class="form-select h-100" aria-label="Category select" name="category">
                     <option selected="true">Select category</option>
                     <option value="technology">Technology</option>
                     <option value="design">Design</option>
@@ -21,15 +21,25 @@
                 </select>
             </div>
         </div>
-        <textarea id="editor" placeholder="Write whatever you want..."></textarea>
+        <textarea id="content" name="content" placeholder="Write whatever you want..."></textarea>
+        <p class="mt-4">If you want to publish this post, you can submit it here !</p>
+        <button id="submit" type="submit" class="form__button-submit mt-3">Submit</button>
     </form>
 </div>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
 <script>
+    let editor;
+
     ClassicEditor
-        .create(document.querySelector('#editor'))
+        .create(document.querySelector('#content'))
+        .then(newEditor => {
+            editor = newEditor;
+        })
         .catch(error => {
             console.error(error);
         });
+    function handleReset() {
+        editor.setData('');
+    }
 </script>

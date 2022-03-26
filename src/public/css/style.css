@@ -346,6 +346,12 @@ body {
     box-shadow: 0px 5px 20px 0px rgb(69 67 96 / 10%);
 }
 
+.post img {
+    width: 100%;
+    height: auto;
+    margin: 12px 0;
+}
+
 .post__thumbnail {
     border-radius: 20px;
     display: block;
@@ -357,6 +363,7 @@ body {
 
 .post__thumbnail img {
     width: 100%;
+    margin: 0;
     height: auto;
     transition: all 0.9s ease-in-out;
 }
@@ -377,6 +384,7 @@ body {
     display: block;
     transition: all .25s ease;
     margin-bottom: 20px;
+    text-transform: capitalize;
 }
 
 .post__category:hover {
@@ -614,6 +622,21 @@ body {
 
 }
 
+.form__button-reset {
+    color: var(--white-color);
+    background-color: var(--pink-color);
+    height: 40px;
+    border-radius: 0.25rem;
+    outline: none;
+    border: none;
+    padding: 0 1rem;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
 .form__button-submit {
     color: var(--white-color);
     background-color: var(--pink-color);
@@ -621,7 +644,7 @@ body {
     border-radius: 0.25rem;
     outline: none;
     border: none;
-    padding: 0 .75rem;
+    padding: 0 1rem;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: .8px;
@@ -632,6 +655,11 @@ body {
 }
 
 .form__button-submit:hover {
+    color: var(--blue-color);
+    background-color: var(--grey-color);
+}
+
+.form__button-reset:hover {
     color: var(--blue-color);
     background-color: var(--grey-color);
 }
