@@ -1,9 +1,10 @@
 :root {
-    --main-color: #fff;
-    --secondary-color: #F9F9FF;
-    --main-text-color: #000;
-    --secondary-text-color: #f67280;
-    --white-text-color: #506172;
+    --white-color: #fff;
+    --grey-color: #F9F9FF;
+    --black-color: #000;
+    --pink-color: #f67280;
+    --blue-color: #506172;
+    --black-blue-color: #152035;
 }
 
 * {
@@ -12,9 +13,21 @@
     padding: 0;
 }
 
+a {
+    color: var(--black-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--pink-color)
+}
+
 body {
     font-family: 'Mulish', sans-serif;
-    background-color: var(--secondary-color);
+    background-color: var(--grey-color);
+    color: var(--blue-color);
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .container {
@@ -22,8 +35,9 @@ body {
 }
 
 .navbar {
-    background-color: var(--main-color);
+    background-color: var(--white-color);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-bottom: 60px;
 }
 
 .navbar-brand {
@@ -35,7 +49,9 @@ body {
     width: auto;
 }
 
-.navbar__block {}
+.navbar__block {
+    display: block;
+}
 
 .navbar__block__list {
     list-style: none;
@@ -50,7 +66,7 @@ body {
 }
 
 .navbar__block__link {
-    color: var(--main-text-color);
+    color: var(--black-color);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 700;
@@ -58,12 +74,12 @@ body {
 }
 
 .navbar__block__link:hover {
-    color: var(--secondary-text-color);
+    color: var(--pink-color);
 }
 
 .navbar__button-search {
-    color: var(--main-color);
-    background-color: var(--secondary-text-color);
+    color: var(--white-color);
+    background-color: var(--pink-color);
     border-radius: 50%;
     width: 35px;
     height: 35px;
@@ -73,12 +89,12 @@ body {
 }
 
 .navbar__button-login {
-    color: var(--main-color);
+    color: var(--white-color);
     height: 35px;
     border-radius: 0.25rem;
     outline: none;
     border: none;
-    background-color: var(--secondary-text-color);
+    background-color: var(--pink-color);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -92,11 +108,12 @@ body {
 }
 
 .navbar__button-login:hover {
-    color: var(--main-color);
+    color: var(--white-color);
 }
 
 .footer {
-    background-color: var(--main-color);
+    margin-top: 120px;
+    background-color: var(--white-color);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
@@ -104,7 +121,7 @@ body {
     font-size: 20px;
     font-weight: 900;
     line-height: 1.4;
-    color: #152035;
+    color: var(--black-blue-color);
     margin: 0 0 1rem;
 
 }
@@ -112,7 +129,7 @@ body {
 .footer__signup {
     margin-bottom: 30px;
     font-size: 14px;
-    color: #506172;
+    color: var(--blue-color);
 }
 
 .footer__input-group {
@@ -131,7 +148,7 @@ body {
     max-width: 450px;
     padding: 0px 20px;
     border-radius: 20px 0 0 20px;
-    color: var(--white-text-color);
+    color: var(--blue-color);
     cursor: pointer;
     transition: all 0.5s ease-in-out;
     border: 1px solid #eee;
@@ -142,14 +159,14 @@ body {
 }
 
 .footer__button-search {
-    background-color: #f67280;
+    background-color: var(--pink-color);
     width: 120px;
     height: 45px;
     border-radius: 0 20px 20px 0;
     color: #ffffff;
     font-weight: 700;
     margin-top: 0px;
-    border: 1px solid #f67280;
+    border: 1px solid var(--pink-color);
     transition: all 0.7s ease-in-out;
 }
 
@@ -159,14 +176,14 @@ body {
     justify-content: center;
     gap: 1.5rem;
     margin-bottom: 50px;
-    color: var(--white-text-color);
+    color: var(--blue-color);
     font-size: 15px;
     font-weight: 600;
 }
 
 .footer__icons div:hover {
     cursor: pointer;
-    color: var(--secondary-text-color);
+    color: var(--pink-color);
 }
 
 .footer__copyright {
@@ -177,5 +194,241 @@ body {
 .footer__copyright p {
     font-size: 14px;
     text-align: center;
-    color: #506172;
+    color: var(--blue-color);
+}
+
+.login {
+    display: block;
+    margin: auto;
+    width: 500px;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    background-color: var(--white-color);
+    box-shadow: 0px 5px 20px 0px rgb(69 67 96 / 10%);
+}
+
+
+.login-title {
+    margin-bottom: 30px;
+    margin-top: 5px;
+    text-transform: capitalize;
+    position: relative;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.4;
+    color: #152035;
+}
+
+.login-title:after {
+    background-color: var(--pink-color);
+    display: block;
+    position: absolute;
+    content: "";
+    left: auto;
+    top: -5px;
+    width: 30px;
+    height: 2px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-input {
+    background-color: #F9F9FF;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    padding: 14px 20px;
+    font-size: 14px;
+    color: #152035;
+    display: inline-block;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    width: 100%;
+}
+
+.form-input:focus {
+    box-shadow: 0px 5px 20px 0px rgb(69 67 96 / 10%);
+    background-color: var(--white-color);
+}
+
+.login-button-submit {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: var(--white-color);
+    background-color: var(--pink-color);
+    border-radius: 50px;
+    padding: .5rem 0;
+    font-weight: 600;
+}
+
+.login-button-submit:hover {
+    color: var(--white-color);
+}
+
+.login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    height: 23px;
+    color: var(--blue-color);
+}
+
+.form-check {
+    height: 23px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.login-options a {
+    line-height: 23px;
+    height: 23px;
+    color: var(--blue-color);
+}
+
+.login-options a:hover {
+    color: var(--pink-color);
+}
+
+.form-check-input:checked {
+    background-color: var(--pink-color);
+    border-color: var(--pink-color);
+}
+
+.login-register {
+    text-align: center;
+}
+
+.login-register span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black-color)
+}
+
+.login-register span:first-child {
+    font-size: 14px;
+    color: var(--blue-color)
+}
+
+/* Laptop */
+.item {
+    width: calc(100% / 3 - 30px);
+}
+
+/* Small Tablet & Mobile */
+@media screen and (max-width: 992px) and (min-width: 768px) {
+    .item {
+        width: calc(100% / 2 - 30px);
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .item {
+        width: calc(100% - 30px);
+    }
+}
+
+.post {
+    padding: 30px;
+    background-color: var(--white-color);
+    border-radius: 20px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.post__thumbnail {
+    border-radius: 20px;
+    display: block;
+    overflow: hidden;
+    margin-top: -60px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 10px rgb(0 0 0 / 8%), 0 0 0 transparent;
+}
+
+.post__thumbnail img {
+    width: 100%;
+    height: auto;
+    transition: all 0.9s ease-in-out;
+}
+
+.post__thumbnail img:hover {
+    transform: scale(1.1);
+}
+
+.post__category {
+    background-color: var(--pink-color);
+    color: var(--white-color);
+    width: min-content;
+    padding: 6px 18px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    transition: all .25s ease;
+    margin-bottom: 20px;
+}
+
+.post__category:hover {
+    color: var(--white-color);
+    background-color: var(--black-color);
+}
+
+.post__title {
+    font-weight: 900;
+    line-height: 1.4;
+    font-size: 20px;
+    color: var(--blue-color);
+    margin-bottom: 8px;
+}
+
+.post__title a {
+    transition: all .3s ease
+}
+
+.post__content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.post__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.post__footer i {
+    font-size: 5px;
+    color: var(--pink-color);
+}
+
+.post__author {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 7px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.post__author img {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
 }
