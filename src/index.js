@@ -37,12 +37,10 @@ app.engine('hbs', handlebars.engine({
         if (item !== null && item !== '')
           return '#' + item.name
       })
-      console.log(array)
-      return array.join(' ')
+      return array ? array.join(' ') : null
     },
     findSelected: (str1, str2) => {
-      console.log(str1, str2)
-      return str1 === str2 && 'selected="true"'
+      return str1 === str2
     }
   }
 }));

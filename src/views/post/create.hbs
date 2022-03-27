@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-9 col-12">
+    <div class="col-lg-12 col-12">
         <div class="card__custom">
             <form action="/post/store" method="post">
                 <div class="d-flex justify-content-between align-items-center mb-5">
@@ -7,22 +7,21 @@
                     <button onclick="handleReset()" type="reset" class="form__button-reset mt-1">Reset</button>
                 </div>
                 <div class="row g-4 mb-3">
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12 col-lg-12">
                         <div class="form-floating">
                             <input type="text" class="form-control" id="floatTitle" name="title"
                                 placeholder="Whatever you want to write...">
                             <label for="floatTitle">Title</label>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
+                    <div class="col-12 col-lg-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatHashtags" name="hashtag"
-                                autocomplete="off" placeholder="Whatever you want to write..."
-                                onchange="handleHashtag(event)">
+                            <input type="text" class="form-control" id="floatHashtags" name="hashtag" autocomplete="off"
+                                placeholder="Whatever you want to write..." onchange="handleHashtag(event)">
                             <label for="floatHashtags">Hashtags</label>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
+                    <div class="col-12 col-lg-6">
                         <select class="form-select h-100" aria-label="Category select" name="category">
                             <option selected="true">Select category</option>
                             {{#each categories}}
@@ -37,41 +36,19 @@
             </form>
         </div>
     </div>
-    <div class="col-lg-3 col-12">
-        <h5 class="card__custom__title mt-4 mb-5">Preview</h5>
-        <div class="post">
-            <div class="post__thumbnail">
-                <img src='/images/image-do-not-exist.png' alt="">
-            </div>
-            <p class="post__category">Category</p>
-            <h5 class="post__title">Title</h5>
-            <div class="post__subtitle">Subtitle</div>
-            <div class="post__info">
-                <p class="post__author">
-                    <img src="https://cdn.iconscout.com/icon/free/png-256/face-1659511-1410033.png" alt="Avatar">
-                    <span>Author</span>
-                </p>
-                <i class="fa-solid fa-circle"></i>
-                <p class="post__createdAt">{{convertDate null}}</p>
-            </div>
-        </div>
-    </div>
 </div>
-
 
 <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
 <script>
-    let editor;
+    let editor = document.querySelector('#content');
     ClassicEditor
-        .create(document.querySelector('#content'))
-        .then(newEditor => {
-            editor = newEditor;
-        })
+        .create(editor, {})
         .catch(error => {
             console.error(error);
         });
+
     function handleReset() {
         editor.setData('');
     }
-  
+
 </script>

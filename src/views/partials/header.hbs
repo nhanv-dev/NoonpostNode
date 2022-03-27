@@ -10,14 +10,16 @@
                 </li>
                 <li class="navbar__block__item">
                     <a class="navbar__block__link" href="/">
-                        Category
+                        <span>Category</span>
+                        <i class="fa-solid fa-angle-down"></i>
                     </a>
-                    {{!-- <ul>
-                        <li>Category</li>
-                        <li>Category</li>
-                        <li>Category</li>
-                        <li>Category</li>
-                    </ul> --}}
+                    <ul class="navbar__category__list">
+                        {{#each categories}}
+                        <li>
+                            <a href="/category/{{this.slug}}" class="navbar__category__link">{{this.name}}</a>
+                        </li>
+                        {{/each }}
+                    </ul>
                 </li>
                 <li class="navbar__block__item">
                     <a class="navbar__block__link" href="/login">Login</a>

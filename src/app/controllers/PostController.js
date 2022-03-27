@@ -4,6 +4,8 @@ const { multipleMongooseToObject, mongooseToObject } = require('../../utils/mong
 
 class PostController {
 
+
+
     async index(req, res, next) {
         res.redirect('/')
     }
@@ -26,13 +28,20 @@ class PostController {
             .catch(next)
         await Post.find({}).sort({ createdAt: 'desc' }).limit(5)
             .then(async (latestPosts) => {
+                latestPosts = await latestPosts.filter(post => {
+                    post.thumbnail = getThumbnailFromContent(post.content)
+                    return post
+                })
                 _latestPosts = await multipleMongooseToObject(latestPosts)
             })
         await Post.findOne({ slug: slug })
             .then(async (post) => {
+                post.hashtag = post.hashtag.filter(hashtag => (hashtag !== null))
                 _post = await mongooseToObject(post)
             })
             .catch(next)
+
+        _post.thumbnail = getThumbnailFromContent(_post.content)
         res.render('post/detail', {
             post: _post,
             latestPosts: _latestPosts,
@@ -55,7 +64,7 @@ class PostController {
     async store(req, res, next) {
         req.body.hashtag = req.body.hashtag.split('#')
         req.body.hashtag = req.body.hashtag.map(tag => {
-            if (tag !== null && tag !== '') {
+            if (!tag) {
                 return {
                     name: tag,
                     slug: tag.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '')
@@ -91,7 +100,7 @@ class PostController {
     async saveUpdate(req, res, next) {
         req.body.hashtag = req.body.hashtag.split('#')
         req.body.hashtag = req.body.hashtag.map(tag => {
-            if (tag !== null && tag !== '') {
+            if (!tag) {
                 return {
                     name: tag,
                     slug: tag.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '')
@@ -104,6 +113,24 @@ class PostController {
             })
             .catch(next)
     }
+
+
+}
+
+function getThumbnailFromContent(content) {
+    const defaultImage = '/images/image-do-not-exist.png'
+
+    if (!content) return defaultImage
+
+    let a = content.indexOf('<img')
+    let b = content.indexOf('>', a) + 1
+    let img = content.slice(a, b)
+    a = img.indexOf('src=')
+    b = img.indexOf(' ', a) + 1
+
+    img = img.slice(a, b).slice(5, img.length - 2)
+    console.log(img)
+    return img || defaultImage
 }
 
 module.exports = new PostController

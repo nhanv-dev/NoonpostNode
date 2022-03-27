@@ -13,9 +13,6 @@
                     {{this.title}}
                 </a>
             </h5>
-            {{!-- <div class="post__subtitle">
-                {{{this.content}}}
-            </div> --}}
             <div class="post__info">
                 <a href="/author/{{this.slugAuthor}}" class="post__author">
                     <img src="https://cdn.iconscout.com/icon/free/png-256/face-1659511-1410033.png" alt="Avatar">
@@ -27,6 +24,11 @@
                 </p>
             </div>
         </div>
+    </div>
+    {{else}}
+    <div class="empty-message">
+        <img src="https://cdn.dribbble.com/users/2416626/screenshots/6438641/2x.png?compress=1&resize=400x300" alt="">
+        <h5> There are no posts on this page.</h5>
     </div>
     {{/each }}
 </div>
