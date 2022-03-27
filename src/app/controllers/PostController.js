@@ -53,7 +53,15 @@ class PostController {
     }
 
     async store(req, res, next) {
-        req.body.hashtag = req.body.hashtag.split(' ')
+        req.body.hashtag = req.body.hashtag.split('#')
+        req.body.hashtag = req.body.hashtag.map(tag => {
+            if (tag !== null && tag !== '') {
+                return {
+                    name: tag,
+                    slug: tag.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '')
+                }
+            }
+        })
         const post = new Post(req.body)
         post.save()
             .then(post => {
@@ -64,7 +72,37 @@ class PostController {
     }
 
     async update(req, res, next) {
-        res.render('post/update')
+        let _categories
+        await Categories.find({})
+            .then(async (categories) => {
+                _categories = await multipleMongooseToObject(categories)
+            })
+            .catch(next)
+
+        await Post.findOne({ slug: req.params.slug })
+            .then(async (post) => {
+                res.render('post/update', {
+                    post: mongooseToObject(post),
+                    categories: _categories
+                })
+            })
+            .catch(next)
+    }
+    async saveUpdate(req, res, next) {
+        req.body.hashtag = req.body.hashtag.split('#')
+        req.body.hashtag = req.body.hashtag.map(tag => {
+            if (tag !== null && tag !== '') {
+                return {
+                    name: tag,
+                    slug: tag.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '')
+                }
+            }
+        })
+        await Post.findOneAndUpdate({ _id: req.params.slug }, req.body)
+            .then((post) => {
+                res.redirect(`/post/${post.slug}`)
+            })
+            .catch(next)
     }
 }
 

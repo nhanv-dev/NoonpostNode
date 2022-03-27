@@ -7,6 +7,7 @@ router.get('/signup', siteController.signup)
 router.get('/login', siteController.login)
 router.post('/login', siteController.authorize)
 router.get('/category/:slug', siteController.category)
+router.get('/hashtag/:slug', siteController.hashtag)
 router.get('/author/:slug', siteController.author)
 router.get('/', siteController.home)
 

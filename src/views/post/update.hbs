@@ -1,3 +1,73 @@
-<div>
-    update form
+<div class="row">
+    <div class="col-lg-12 col-12">
+        <div class="card__custom">
+            <form action="/post/update/{{post._id}}?_method=PUT" method="POST">
+                <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h5 class="card__custom__title m-0">Update a post</h5>
+                    <button onclick="handleReset()" type="reset" class="form__button-reset mt-1">Reset</button>
+                </div>
+                <div class="row g-4 mb-3">
+                    <div class="col-12 col-lg-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatTitle" name="title"
+                                placeholder="Whatever you want to write..." value="{{post.title}}">
+                            <label for="floatTitle">Title</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatHashtags" name="hashtag" autocomplete="off"
+                                placeholder="Whatever you want to write..." value="{{convertHashtag post.hashtag}}">
+                            <label for="floatHashtags">Hashtags</label>
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <select class="form-select h-100" aria-label="Category select" name="category">
+                            <option>Select category</option>
+                            {{#each categories}}
+                            <option {{#findSelected post.category this.slug }} selected="true" {{/findSelected}}
+                                value={{this.slug}}>
+                                {{this.name}}
+                            </option>
+                            {{/each }}
+                        </select>
+                    </div>
+                </div>
+                <div id="content" name="content" placeholder="Write whatever you want...">
+                    {{{post.content}}}
+                </div>
+                <hr class="my-4">
+                <p>If you want to update this post, you can save it here !</p>
+                <button id="submit" type="submit" class="form__button-submit mt-3">Save it!</button>
+            </form>
+        </div>
+    </div>
+
 </div>
+
+
+<script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/balloon-block/ckeditor.js"></script>
+<script>
+    let editor;
+    let hashtags = []
+    BalloonEditor
+        .create(document.querySelector('#content'), {
+            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
+            heading: {
+                options: [
+                    { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+                ]
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+    function handleReset() {
+        editor.setData('');
+    }
+
+</script>

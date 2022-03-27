@@ -62,7 +62,6 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
 <script>
     let editor;
-    let hashtags = []
     ClassicEditor
         .create(document.querySelector('#content'))
         .then(newEditor => {
@@ -74,10 +73,5 @@
     function handleReset() {
         editor.setData('');
     }
-    function handleHashtag(e) {
-        let value = e.target.value;
-        console.log(hashtags, value.split(' ').length >= hashtags.length);
-        if (value.split(' ').length >= hashtags.length - 1)
-            hashtags.push(value.split(' ')[value.split(' ').length - 1])
-    }
+  
 </script>

@@ -13,8 +13,6 @@ class PostController {
                 })
             })
             .catch(next)
-
-
     }
     category(req, res, next) {
         Post.find({ category: req.params.slug })
@@ -25,10 +23,20 @@ class PostController {
             })
             .catch(next)
     }
+
+    hashtag(req, res, next) {
+        Post.find({ "hashtag.slug": req.params.slug })
+            .then(posts => {
+                res.render('pages/home', {
+                    posts: multipleMongooseToObject(posts)
+                })
+            })
+            .catch(next)
+    }
+
     author(req, res, next) {
         Post.find({ slugAuthor: req.params.slug })
             .then(posts => {
-                console.log(posts)
                 res.render('pages/home', {
                     posts: multipleMongooseToObject(posts)
                 })
