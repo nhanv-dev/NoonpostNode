@@ -3,9 +3,11 @@ const router = express.Router()
 
 const siteController = require('../app/controllers/SiteController')
 
-router.use('/signup', siteController.signup)
+router.get('/signup', siteController.signup)
 router.get('/login', siteController.login)
 router.post('/login', siteController.authorize)
-router.use('/', siteController.home)
+router.get('/category/:slug', siteController.category)
+router.get('/author/:slug', siteController.author)
+router.get('/', siteController.home)
 
 module.exports = router

@@ -1,36 +1,68 @@
-<div class="card__custom">
-    <form action="/post/store" method="post">
-        <div class="d-flex justify-content-between align-items-center mb-5">
-            <h5 class="card__custom__title m-0">Create a new post</h5>
-            <button onclick="handleReset()" type="reset" class="form__button-reset mt-1">Reset</button>
-        </div>
-        <div class="row g-4 mb-3">
-            <div class="col-12 col-lg-6">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" name="title">
-                    <label for="floatingInput">Title</label>
+<div class="row">
+    <div class="col-lg-9 col-12">
+        <div class="card__custom">
+            <form action="/post/store" method="post">
+                <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h5 class="card__custom__title m-0">Create a new post</h5>
+                    <button onclick="handleReset()" type="reset" class="form__button-reset mt-1">Reset</button>
                 </div>
+                <div class="row g-4 mb-3">
+                    <div class="col-12 col-lg-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatTitle" name="title"
+                                placeholder="Whatever you want to write...">
+                            <label for="floatTitle">Title</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatHashtags" name="hashtag"
+                                autocomplete="off" placeholder="Whatever you want to write..."
+                                onchange="handleHashtag(event)">
+                            <label for="floatHashtags">Hashtags</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <select class="form-select h-100" aria-label="Category select" name="category">
+                            <option selected="true">Select category</option>
+                            {{#each categories}}
+                            <option value={{this.slug}}>{{this.name}}</option>
+                            {{/each }}
+                        </select>
+                    </div>
+                </div>
+                <textarea id="content" name="content" placeholder="Write whatever you want..."></textarea>
+                <p class="mt-4">If you want to publish this post, you can submit it here !</p>
+                <button id="submit" type="submit" class="form__button-submit mt-3">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-3 col-12">
+        <h5 class="card__custom__title mt-4 mb-5">Preview</h5>
+        <div class="post">
+            <div class="post__thumbnail">
+                <img src='/images/image-do-not-exist.png' alt="">
             </div>
-            <div class="col-12 col-lg-3">
-                <select class="form-select h-100" aria-label="Category select" name="category">
-                    <option selected="true">Select category</option>
-                    <option value="technology">Technology</option>
-                    <option value="design">Design</option>
-                    <option value="lifestyle">Lifestyle</option>
-                    <option value="travel">Travel</option>
-                </select>
+            <p class="post__category">Category</p>
+            <h5 class="post__title">Title</h5>
+            <div class="post__subtitle">Subtitle</div>
+            <div class="post__info">
+                <p class="post__author">
+                    <img src="https://cdn.iconscout.com/icon/free/png-256/face-1659511-1410033.png" alt="Avatar">
+                    <span>Author</span>
+                </p>
+                <i class="fa-solid fa-circle"></i>
+                <p class="post__createdAt">{{convertDate null}}</p>
             </div>
         </div>
-        <textarea id="content" name="content" placeholder="Write whatever you want..."></textarea>
-        <p class="mt-4">If you want to publish this post, you can submit it here !</p>
-        <button id="submit" type="submit" class="form__button-submit mt-3">Submit</button>
-    </form>
+    </div>
 </div>
+
 
 <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
 <script>
     let editor;
-
+    let hashtags = []
     ClassicEditor
         .create(document.querySelector('#content'))
         .then(newEditor => {
@@ -41,5 +73,11 @@
         });
     function handleReset() {
         editor.setData('');
+    }
+    function handleHashtag(e) {
+        let value = e.target.value;
+        console.log(hashtags, value.split(' ').length >= hashtags.length);
+        if (value.split(' ').length >= hashtags.length - 1)
+            hashtags.push(value.split(' ')[value.split(' ').length - 1])
     }
 </script>

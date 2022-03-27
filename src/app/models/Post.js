@@ -8,11 +8,11 @@ const Post = new Schema({
     title: { type: String, required: true },
     author: { type: String, default: 'Anonymous' },
     content: { type: String, required: true },
-    slug: { type: String, slug: "title", unique: true },
-    slugAuthor: { type: String, slug: "author", unique: true },
+    slug: { type: String, slug: "title", required: true, unique: true },
+    slugAuthor: { type: String, slug: "author", required: true},
     category: { type: String, required: true },
     thumbnail: { type: String, default: '/images/image-do-not-exist.png' },
-    hashtags: { type: Array },
+    hashtag: { type: Array },
 }, {
     timestamps: true,
 })

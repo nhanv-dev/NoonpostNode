@@ -21,13 +21,14 @@ app.engine('hbs', handlebars.engine({
   extname: '.hbs',
   helpers: {
     convertDate: (time) => {
-      var date = new Date(time);
+      var day = new Date(time);
+      var today = new Date();
       var options = {
         day: "numeric",
         month: "long",
         year: "numeric"
       }
-      return date.toLocaleDateString("en-US", options);
+      return time ? day.toLocaleDateString("en-US", options) : today.toLocaleDateString("en-US", options);
     }
   }
 }));

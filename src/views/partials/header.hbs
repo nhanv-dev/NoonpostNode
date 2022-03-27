@@ -9,7 +9,9 @@
                     <a class="navbar__block__link" href="/">Home</a>
                 </li>
                 <li class="navbar__block__item">
-                    <a class="navbar__block__link" href="/">Category</a>
+                    <a class="navbar__block__link" href="/">
+                        Category
+                    </a>
                     {{!-- <ul>
                         <li>Category</li>
                         <li>Category</li>
@@ -18,14 +20,14 @@
                     </ul> --}}
                 </li>
                 <li class="navbar__block__item">
-                    <a class="navbar__block__link" href="/">About</a>
-                </li>
-                <li class="navbar__block__item">
-                    <a class="navbar__block__link" href="/">Contact</a>
+                    <a class="navbar__block__link" href="/login">Login</a>
                 </li>
             </ul>
         </div>
         <div class="d-flex gap-3 justify-content-center align-items-center">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="toggle-theme">
+            </div>
             <span><i class="fa-brands fa-facebook-f"></i></span>
             <span><i class="fa-brands fa-instagram"></i></span>
             <span><i class="fa-brands fa-twitter"></i></span>
@@ -33,14 +35,10 @@
             <button class="navbar__button-search">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
-            <a href="/login" class="navbar__button-login">
+            {{!-- <a href="/login" class="navbar__button-login">
                 <i class="fa-solid fa-right-to-bracket"></i>
-                <span>Login</span>
-            </a>
-            <a href="/post/create" class="navbar__button-login">
-                <i class="fa-solid fa-plus"></i>
                 <span>Create</span>
-            </a>
+            </a> --}}
         </div>
 
     </div>

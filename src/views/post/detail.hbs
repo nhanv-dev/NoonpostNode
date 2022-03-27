@@ -4,7 +4,7 @@
             <div class="post__thumbnail">
                 <img src={{post.thumbnail}} alt="">
             </div>
-            <a href="/category/travel" class="post__category">
+            <a href="/category/{{post.category}}" class="post__category">
                 {{post.category}}
             </a>
             <h5 class="post__title fs-3 mb-4">
@@ -17,7 +17,7 @@
                 </a>
                 <i class="fa-solid fa-circle"></i>
                 <p class="post__createdAt">
-                    January 15, 2021
+                    {{convertDate post.createdAt}}
                 </p>
             </div>
             <div class="post__content">
@@ -39,77 +39,47 @@
         </div>
     </div>
     <div class="col-lg-4 col-12">
-        <div class="card__custom">
-            <h5 class="card__custom__title mb-3">Latest Posts</h5>
-            <ul>
-                <li class="small-blog__item">
-                    <a href="/post/example" class="small-blog__thumbnail">
-                        <img src="https://noonpost.netlify.app/html/template/assets/img/latest/1.jpg" alt="">
-                    </a>
-                    <div>
-                        <h5 class="small-blog__title">
-                            <a href="">5 Things I Wish I Knew Before Traveling to Malaysia</a>
-                        </h5>
-                        <p class="small-blog__createdAt">
-                            <i class="fa-solid fa-clock"></i>
-                            <span> January 15, 2021 </span>
-                        </p>
-                    </div>
-                </li>
-                <li class="small-blog__item">
-                    <div class="small-blog__thumbnail">
-                        <img src="https://noonpost.netlify.app/html/template/assets/img/latest/1.jpg" alt="">
-                    </div>
-                    <div>
-                        <h5 class="small-blog__title">
-                            <a href="">5 Things I Wish I Knew Before Traveling to Malaysia</a>
-                        </h5>
-                        <p class="small-blog__createdAt">
-                            <i class="fa-solid fa-clock"></i>
-                            <span> January 15, 2021 </span>
-                        </p>
-                    </div>
-                </li>
-                <li class="small-blog__item">
-                    <div class="small-blog__thumbnail">
-                        <img src="https://noonpost.netlify.app/html/template/assets/img/latest/1.jpg" alt="">
-                    </div>
-                    <div>
-                        <h5 class="small-blog__title">
-                            <a href="">5 Things I Wish I Knew Before Traveling to Malaysia</a>
-                        </h5>
-                        <p class="small-blog__createdAt">
-                            <i class="fa-solid fa-clock"></i>
-                            <span> January 15, 2021 </span>
-                        </p>
-                    </div>
-                </li>
-                <li class="small-blog__item">
-                    <div class="small-blog__thumbnail">
-                        <img src="https://noonpost.netlify.app/html/template/assets/img/latest/1.jpg" alt="">
-                    </div>
-                    <div>
-                        <h5 class="small-blog__title">
-                            <a href="">5 Things I Wish I Knew Before Traveling to Malaysia</a>
-                        </h5>
-                        <p class="small-blog__createdAt">
-                            <i class="fa-solid fa-clock"></i>
-                            <span> January 15, 2021 </span>
-                        </p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="card__custom">
-            <h5 class="card__custom__title mb-3">Category</h5>
-            <ul>
-                {{#each categories}}
-                <li class="category__item">
-                    <a href="/category/{{this.name}}">{{this.name}}</a>
-                    <span>{{this.amount}} posts</span>
-                </li>
-                {{/each }}
-            </ul>
+        <div class="row">
+            <div class="col-md-6 col-12 col-lg-12">
+                {{#if latestPosts}}
+                <div class="card__custom">
+                    <h5 class="card__custom__title mb-3">Latest Posts</h5>
+                    <ul>
+                        {{#each latestPosts}}
+                        <li class="small-blog__item">
+                            <a href="/post/{{this.slug}}" class="small-blog__thumbnail">
+                                <img src={{this.thumbnail}} alt={{this.title}}>
+                            </a>
+                            <div>
+                                <h5 class="small-blog__title">
+                                    <a href="/post/{{this.slug}}">{{this.title}}</a>
+                                </h5>
+                                <p class="small-blog__createdAt">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <span>{{convertDate this.createdAt}}</span>
+                                </p>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{/if}}
+            </div>
+            <div class="col-md-6 col-12 col-lg-12">
+                {{#if categories}}
+                <div class="card__custom">
+                    <h5 class="card__custom__title mb-3">Category</h5>
+                    <ul>
+                        {{#each categories}}
+                        <li class="category__item">
+                            <a href="/category/{{this.name}}">{{this.name}}</a>
+                            <span>{{this.amount}} posts</span>
+                        </li>
+                        {{/each }}
+                    </ul>
+                </div>
+                {{/if}}
+            </div>
         </div>
     </div>
 </div>

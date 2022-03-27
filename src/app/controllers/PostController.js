@@ -4,7 +4,7 @@ const { multipleMongooseToObject, mongooseToObject } = require('../../utils/mong
 
 class PostController {
 
-    index(req, res, next) {
+    async index(req, res, next) {
         res.redirect('/')
     }
 
@@ -24,13 +24,13 @@ class PostController {
                 })
             })
             .catch(next)
-        await Post.find({})
+        await Post.find({}).sort({ createdAt: 'desc' }).limit(5)
             .then(async (latestPosts) => {
                 _latestPosts = await multipleMongooseToObject(latestPosts)
             })
         await Post.findOne({ slug: slug })
-            .then(post => {
-                _post = mongooseToObject(post)
+            .then(async (post) => {
+                _post = await mongooseToObject(post)
             })
             .catch(next)
         res.render('post/detail', {
@@ -40,11 +40,20 @@ class PostController {
         })
     }
 
-    create(req, res, next) {
-        res.render('post/create')
+    async create(req, res, next) {
+        let _categories
+        await Categories.find({})
+            .then(async (categories) => {
+                _categories = await multipleMongooseToObject(categories)
+            })
+            .catch(next)
+        res.render('post/create', {
+            categories: _categories
+        })
     }
 
-    store(req, res, next) {
+    async store(req, res, next) {
+        req.body.hashtag = req.body.hashtag.split(' ')
         const post = new Post(req.body)
         post.save()
             .then(post => {
@@ -54,7 +63,7 @@ class PostController {
             .catch(next)
     }
 
-    update(req, res, next) {
+    async update(req, res, next) {
         res.render('post/update')
     }
 }

@@ -5,7 +5,7 @@
             <a href="/post/{{this.slug}}" class="post__thumbnail">
                 <img src={{this.thumbnail}} alt="">
             </a>
-            <a href="/category/travel" class="post__category">
+            <a href="/category/{{this.category}}" class="post__category">
                 {{this.category}}
             </a>
             <h5 class="post__title">
@@ -13,11 +13,9 @@
                     {{this.title}}
                 </a>
             </h5>
-            <p class="post__subtitle">
-                {{!-- {{{this.content}}} --}}
-                Q: So first, can you tell us a bit about how you make the case for diversity in your organization – What
-                do you think are the
-            </p>
+            <div class="post__subtitle">
+                {{{this.content}}}
+            </div>
             <div class="post__info">
                 <a href="/author/{{this.slugAuthor}}" class="post__author">
                     <img src="https://cdn.iconscout.com/icon/free/png-256/face-1659511-1410033.png" alt="Avatar">
