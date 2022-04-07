@@ -439,26 +439,15 @@ ul {
     color: var(--blue-color)
 }
 
-/* Laptop */
+
 .item {
-    width: calc(100% / 3 - 30px);
+    padding: 1rem;
 }
 
-/* Small Tablet & Mobile */
-@media screen and (max-width: 992px) and (min-width: 768px) {
-    .item {
-        width: calc(100% / 2 - 30px);
-    }
-}
-
-/* Mobile */
-@media screen and (max-width: 768px) {
-    .item {
-        width: 100%;
-    }
-}
 
 .post {
+    grid-row: 1 / -1;
+    grid-column: 1;
     padding: 30px;
     background-color: var(--white-color);
     border-radius: 20px;
