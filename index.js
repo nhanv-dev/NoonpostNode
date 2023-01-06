@@ -5,13 +5,13 @@ const morgan = require('morgan')
 const path = require('path')
 const handlebars = require('express-handlebars')
 
-const route = require('./routes')
-const db = require('./config/db')
+const route = require('./src/routes')
+const db = require('./src/config/db')
 const methodOverride = require('method-override')
 
 const port = process.env.PORT || 3000
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'src/public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(methodOverride('_method'))
@@ -45,7 +45,7 @@ app.engine('hbs', handlebars.engine({
   }
 }));
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'src/views'));
 
 // Connect to MongoDB
 db.connect()
