@@ -20,13 +20,17 @@
                     {{convertDate post.createdAt}}
                 </p>
             </div>
-            <div class="post__content">
+            <div class="post__content" id="content">
                 {{{post.content}}}
             </div>
             <div class="post__footer">
                 <div class="post__hashtags">
                     {{#each post.hashtag}}
+                    {{#if this.name}}
+                    {{#if this.slug}}
                     <a href="/hashtag/{{this.slug}}">{{this.name}}</a>
+                    {{/if}}
+                    {{/if}}
                     {{/each }}
                 </div>
                 <div class="post__social">
@@ -36,6 +40,7 @@
                     <button style="background: #e52d27"><i class="fa-brands fa-youtube"></i></button>
                 </div>
             </div>
+            <a href="/post/update/{{post.slug}} ">Edit it!</a>
         </div>
     </div>
     <div class="col-lg-4 col-12">

@@ -41,7 +41,7 @@ class PostController {
             })
             .catch(next)
 
-        _post.thumbnail = getThumbnailFromContent(_post.content)
+        _post.thumbnail = getThumbnailFromContent(_post?.content)
         res.render('post/detail', {
             post: _post,
             latestPosts: _latestPosts,

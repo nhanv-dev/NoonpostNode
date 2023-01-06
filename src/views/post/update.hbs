@@ -18,7 +18,6 @@
                             <input type="text" class="form-control" id="floatHashtags" name="hashtag" autocomplete="off"
                                 placeholder="Whatever you want to write..." value="{{convertHashtag post.hashtag}}">
                             <label for="floatHashtags">Hashtags</label>
-
                         </div>
                     </div>
                     <div class="col-12 col-lg-6">
@@ -32,7 +31,7 @@
                         </select>
                     </div>
                 </div>
-                <textarea id="content" name="content" placeholder="Write whatever you want...">
+                <textarea id="content" name="content" rows="10" cols="120" placeholder="Write whatever you want...">
                     {{{post.content}}}
                 </textarea>
                 <hr class="my-4">
@@ -44,16 +43,7 @@
 
 </div>
 
-
-<script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
+<script src="/js/ckeditor/ckeditor.js"></script>
 <script>
-    let editor = document.querySelector('#content');
-    ClassicEditor
-        .create(editor, {})
-        .catch(error => {
-            console.error(error);
-        });
-
-
-
+    CKEDITOR.replace('content');
 </script>

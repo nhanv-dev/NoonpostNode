@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/nhanv-dev/personal-blog-node#readme",
   "dependencies": {
-    "@ckeditor/ckeditor5-alignment": "^33.0.0",
     "express": "^4.17.3",
     "express-handlebars": "^6.0.3",
     "method-override": "^3.0.0",
@@ -34,6 +33,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@ckeditor/ckeditor5-alignment": "^33.0.0",
     "nodemon": "^2.0.15",
     "webpack-cli": "^3.3.12"
   }

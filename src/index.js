@@ -34,8 +34,8 @@ app.engine('hbs', handlebars.engine({
     },
     convertHashtag: (array) => {
       array = array.map((item) => {
-        if (item !== null && item !== '')
-          return '#' + item.name
+        if (item !== null && item !== '' && item !== ' ')
+          return '#' + item.name + 213213
       })
       return array ? array.join(' ') : null
     },
@@ -54,5 +54,5 @@ db.connect()
 route(app)
 
 app.listen(port, () => {
-  console.log(`WebApp listening on port${port}`)
+  console.log(`WebApp listening on port ${port}`)
 })

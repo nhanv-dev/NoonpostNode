@@ -4,6 +4,7 @@ const router = express.Router()
 const siteController = require('../app/controllers/SiteController')
 
 router.get('/signup', siteController.signup)
+router.post('/signup', siteController.register)
 router.get('/login', siteController.login)
 router.post('/login', siteController.authorize)
 router.get('/category/:slug', siteController.category)

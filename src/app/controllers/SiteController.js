@@ -2,7 +2,7 @@ const Post = require('../models/Post')
 const Categories = require('../models/Categories')
 const Users = require('../models/Users')
 const { multipleMongooseToObject } = require('../../utils/mongoose')
-class PostController {
+class SiteController {
 
     async home(req, res, next) {
         Post.find({})
@@ -81,6 +81,12 @@ class PostController {
             categories: await findAllCategory()
         })
     }
+    async register(req, res, next) {
+        console.log(req.body)
+        res.render('pages/signup', {
+            categories: await findAllCategory()
+        })
+    }
 
 }
 
@@ -88,16 +94,16 @@ function getThumbnailFromContent(content) {
     const defaultImage = '/images/image-do-not-exist.png'
 
     if (!content) return defaultImage
-
-    let a = content.indexOf('<img')
-    let b = content.indexOf('>', a) + 1
-    let img = content.slice(a, b)
-    a = img.indexOf('src=')
-    b = img.indexOf(' ', a) + 1
-
-    img = img.slice(a, b).slice(5, img.length - 2)
-    console.log(img)
-    return img || defaultImage
+    // let img = content.slice(a, b)
+    // try {
+    //     let a = content.indexOf('<img')
+    //     let b = content.indexOf('>', a) + 1
+    //     a = img.indexOf('src=')
+    //     b = img.indexOf(' ', a) + 1
+    //     img = img.slice(a, b).slice(5, img.length - 2)
+    // } catch (e) {
+    // }
+    return  defaultImage
 }
 
 async function findAllCategory() {
@@ -117,4 +123,4 @@ async function findAllCategory() {
     return _categories;
 }
 
-module.exports = new PostController
+module.exports = new SiteController
