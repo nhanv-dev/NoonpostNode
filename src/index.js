@@ -5,8 +5,8 @@ const morgan = require('morgan')
 const path = require('path')
 const handlebars = require('express-handlebars')
 
-const route = require('./src/routes')
-const db = require('./src/config/db')
+const route = require('./routes')
+const db = require('./config/db')
 const methodOverride = require('method-override')
 
 const port = process.env.PORT || 3000
