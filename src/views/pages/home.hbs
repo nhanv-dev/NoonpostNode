@@ -3,7 +3,7 @@
     <div class="item">
         <div class="post">
             <a href="/post/{{this.slug}}" class="post__thumbnail">
-                <img src={{this.thumbnail}} alt="">
+                <img src={{this.thumbnail}} alt="" onerror="errorCallback(this)">
             </a>
             <a href="/category/{{this.category}}" class="post__category">
                 {{this.category}}

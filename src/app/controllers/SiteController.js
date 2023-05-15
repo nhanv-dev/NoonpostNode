@@ -1,7 +1,9 @@
 const Post = require('../models/Post')
 const Categories = require('../models/Categories')
 const Users = require('../models/Users')
+const { getThumbnailFromContent } = require('../../utils/tools')
 const { multipleMongooseToObject } = require('../../utils/mongoose')
+
 class SiteController {
 
     async home(req, res, next) {
@@ -88,22 +90,6 @@ class SiteController {
         })
     }
 
-}
-
-function getThumbnailFromContent(content) {
-    const defaultImage = '/images/image-do-not-exist.png'
-
-    if (!content) return defaultImage
-    // let img = content.slice(a, b)
-    // try {
-    //     let a = content.indexOf('<img')
-    //     let b = content.indexOf('>', a) + 1
-    //     a = img.indexOf('src=')
-    //     b = img.indexOf(' ', a) + 1
-    //     img = img.slice(a, b).slice(5, img.length - 2)
-    // } catch (e) {
-    // }
-    return  defaultImage
 }
 
 async function findAllCategory() {

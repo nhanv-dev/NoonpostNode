@@ -1,10 +1,9 @@
 const Post = require('../models/Post')
 const Categories = require('../models/Categories')
+const { getThumbnailFromContent } = require('../../utils/tools')
 const { multipleMongooseToObject, mongooseToObject } = require('../../utils/mongoose')
 
 class PostController {
-
-
 
     async index(req, res, next) {
         res.redirect('/')
@@ -22,10 +21,10 @@ class PostController {
                         .then(count => {
                             category.amount = count
                         })
-                        .catch(next)
+                        .catch(() => { })
                 })
             })
-            .catch(next)
+            .catch(() => { })
         await Post.find({}).sort({ createdAt: 'desc' }).limit(5)
             .then(async (latestPosts) => {
                 latestPosts = await latestPosts.filter(post => {
@@ -39,9 +38,8 @@ class PostController {
                 post.hashtag = post.hashtag.filter(hashtag => (hashtag !== null))
                 _post = await mongooseToObject(post)
             })
-            .catch(next)
-
-        _post.thumbnail = getThumbnailFromContent(_post?.content)
+            .catch(() => { })
+        if (_post) _post.thumbnail = getThumbnailFromContent(_post?.content)
         res.render('post/detail', {
             post: _post,
             latestPosts: _latestPosts,
@@ -117,20 +115,6 @@ class PostController {
 
 }
 
-function getThumbnailFromContent(content) {
-    const defaultImage = '/images/image-do-not-exist.png'
 
-    if (!content) return defaultImage
-
-    let a = content.indexOf('<img')
-    let b = content.indexOf('>', a) + 1
-    let img = content.slice(a, b)
-    a = img.indexOf('src=')
-    b = img.indexOf(' ', a) + 1
-
-    img = img.slice(a, b).slice(5, img.length - 2)
-    console.log(img)
-    return img || defaultImage
-}
 
 module.exports = new PostController

@@ -2,7 +2,7 @@
     <div class="col-lg-8 col-12">
         <div class="post">
             <div class="post__thumbnail">
-                <img src={{post.thumbnail}} alt="">
+                <img src={{post.thumbnail}} alt="" onerror="errorCallback(this)">
             </div>
             <a href="/category/{{post.category}}" class="post__category">
                 {{post.category}}
@@ -53,7 +53,7 @@
                         {{#each latestPosts}}
                         <li class="small-blog__item">
                             <a href="/post/{{this.slug}}" class="small-blog__thumbnail">
-                                <img src={{this.thumbnail}} alt={{this.title}}>
+                                <img src={{this.thumbnail}} alt={{this.title}} onerror="errorCallback(this)">
                             </a>
                             <div>
                                 <h5 class="small-blog__title">
