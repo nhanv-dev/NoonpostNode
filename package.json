@@ -4,11 +4,11 @@
   "description": "Using nodejs + express + engine handlebars to build a blog website",
   "main": "index.js",
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "scripts": {
     "start": "node ./index.js",
-    "devStart": "nodemon --inspect ./index.js",
+    "dev": "nodemon --inspect ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
