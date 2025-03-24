@@ -1,7 +1,7 @@
+require("dotenv").config();
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
-
 const path = require('path')
 const handlebars = require('express-handlebars')
 

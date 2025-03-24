@@ -1,5 +1,5 @@
 {
-  "name": "personal-blog",
+  "name": "noonpost",
   "version": "1.0.0",
   "description": "Using nodejs + express + engine handlebars to build a blog website",
   "main": "index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/nhanv-dev/personal-blog-node.git"
+    "url": "git+ssh://git@github.com/nhanv-dev/NoonpostNode.git"
   },
   "keywords": [
     "nodejs",
@@ -24,10 +24,11 @@
   "author": "nhanv-dev",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nhanv-dev/personal-blog-node/issues"
+    "url": "https://github.com/nhanv-dev/NoonpostNode/issues"
   },
-  "homepage": "https://github.com/nhanv-dev/personal-blog-node#readme",
+  "homepage": "https://github.com/nhanv-dev/NoonpostNode#readme",
   "dependencies": {
+    "dotenv": "^16.4.7",
     "express": "^4.17.3",
     "express-handlebars": "^6.0.3",
     "method-override": "^3.0.0",
