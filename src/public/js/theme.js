@@ -1,10 +1,8 @@
 
 $(document).ready(function () {
 
-    window.addEventListener('load', () => {
-        $('body').addClass('loading')
-        setTimeout(loaderSite, 1500);
-    }, false);
+    $('body').addClass('loading')
+    setTimeout(loaderSite, 1500);
 
     function loaderSite() {
         $('.load-container').hide();
